@@ -11,6 +11,7 @@ category:            Web
 
 extra-source-files:
   - README.md
+  - test/*.pcap
 
 ghc-options:
   - -fwarn-unused-imports
@@ -29,3 +30,14 @@ dependencies:
 library:
   source-dirs: .
   other-modules: []
+
+tests:
+  streaming-pcap-test:
+    main: Test.hs
+    source-dirs: test
+    ghc-options:
+      - -threaded
+    dependencies:
+      - tasty >= 0.11 && < 1.1
+      - tasty-hunit >= 0.9 && < 0.11
+      - streaming-pcap
