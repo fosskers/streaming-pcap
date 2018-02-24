@@ -1,0 +1,7 @@
+resolver: lts-10.6
+
+packages:
+  - .
+
+extra-deps:
+  - pcap-0.4.5.2

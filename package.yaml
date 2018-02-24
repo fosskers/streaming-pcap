@@ -1,0 +1,31 @@
+name:                streaming-pcap
+version:             1.0.0
+synopsis:            Stream packets via libpcap.
+description:         Stream packets via libpcap.
+homepage:            https://github.com/fosskers/streaming-pcap
+license:             BSD3
+author:              Colin Woodbury
+maintainer:          colingw@gmail.com
+copyright:           2018 Colin Woodbury
+category:            Web
+
+extra-source-files:
+  - README.md
+
+ghc-options:
+  - -fwarn-unused-imports
+  - -fwarn-unused-binds
+  - -fwarn-name-shadowing
+  - -fwarn-unused-matches
+  - -fwarn-incomplete-patterns
+  - -fwarn-incomplete-uni-patterns
+
+dependencies:
+  - base >= 4.7 && < 5
+  - bytestring
+  - pcap >= 0.4 && < 0.5
+  - streaming >= 0.2 && < 0.3
+
+library:
+  source-dirs: .
+  other-modules: []
