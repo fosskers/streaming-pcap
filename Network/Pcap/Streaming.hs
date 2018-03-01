@@ -10,25 +10,24 @@
 
 module Network.Pcap.Streaming
   ( Packet(..)
+  , PktHdr(..)
   , offline
   , online
   ) where
 
-import qualified Data.ByteString as BS
+import qualified Data.Attoparsec.ByteString.Streaming as A
+import qualified Data.ByteString.Streaming as Q
 import           Data.Int (Int64)
 import           Network.Pcap
+import           Network.Pcap.Streaming.Internal
 import           Streaming
 import qualified Streaming.Prelude as P
 
 ---
 
--- | A <https://en.wikipedia.org/wiki/Pcap pcap> packet. Assumes nothing about
--- the contents or structure of the `bytes` value.
-data Packet = Packet { header :: PktHdr, bytes :: BS.ByteString } deriving (Eq, Show)
-
--- | Read `Packet`s from some file dump. See also `Network.Pcap.openOffline`.
-offline :: FilePath -> Stream (Of Packet) IO ()
-offline path = lift (openOffline path) >>= packets
+-- | Read `Packet`s from some file dump.
+offline :: FilePath -> Stream (Of Packet) (ResourceT IO) ()
+offline = void . A.parsed packetP . Q.drop 24 . Q.readFile
 
 -- | Read `Packet`s from some network device. See `Network.Pcap.openLive`
 -- for a description of each argument.
