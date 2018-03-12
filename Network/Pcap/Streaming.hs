@@ -25,7 +25,7 @@ import qualified Streaming.Prelude as P
 
 ---
 
--- | Read `Packet`s from some file dump.
+-- | Read `Packet`s from some file dump. Uses a custom parser, not /libpcap/.
 --
 -- /SPECIALIZE/d for @ResourceT IO@.
 offline :: MonadResource m => FilePath -> Stream (Of Packet) m ()
