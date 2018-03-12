@@ -26,15 +26,15 @@ import qualified Streaming.Prelude as P
 ---
 
 -- | Read `Packet`s from some file dump.
-offline :: FilePath -> Stream (Of Packet) (ResourceT IO) ()
+offline :: MonadResource m => FilePath -> Stream (Of Packet) m ()
 offline = void . A.parsed packetP . Q.drop 24 . Q.readFile
 
 -- | Read `Packet`s from some network device. See `Network.Pcap.openLive`
 -- for a description of each argument.
-online :: String -> Int -> Bool -> Int64 -> Stream (Of Packet) IO ()
-online n s p t = lift (openLive n s p t) >>= packets
+online :: MonadIO m => String -> Int -> Bool -> Int64 -> Stream (Of Packet) m ()
+online n s p t = liftIO (openLive n s p t) >>= packets
 
-packets :: PcapHandle -> Stream (Of Packet) IO ()
+packets :: MonadIO m => PcapHandle -> Stream (Of Packet) m ()
 packets h = do
-  (hdr,bs) <- lift (nextBS h)
+  (hdr,bs) <- liftIO (nextBS h)
   if hdrCaptureLength hdr == 0 then pure () else P.yield (Packet hdr bs) *> packets h
