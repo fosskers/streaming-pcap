@@ -8,7 +8,8 @@ language: c
 addons:
   apt:
     packages:
-    - libgmp-dev
+      - libgmp-dev
+      - libpcap-dev
 
 # The different configurations we want to test. You could also do things like
 # change flags or use --stack-yaml to point to a different file.
