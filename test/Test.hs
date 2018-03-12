@@ -21,8 +21,8 @@ suite = testGroup "Unit Tests"
     , testCase "four" $ A.parseOnly four foury @?= Right 1338882754
     ]
   , testGroup "Streaming"
-    [ testCase "Packet Quantity (test)" $ runResourceT (P.length_ $ offline "test/test.pcap") >>= (@?= 4)
-    -- , testCase "Packet Quantity (tsuru)" $ runResourceT (P.length_ $ offline "test/tsuru.pcap") >>= (@?= 21273)
+    [ testCase "Packet Quantity (test)"  $ runResourceT (P.length_ $ offline "test/test.pcap") >>= (@?= 4)
+    , testCase "Packet Quantity (tsuru)" $ runResourceT (P.length_ $ offline "test/tsuru.pcap") >>= (@?= 21273)
     ]
   ]
 
