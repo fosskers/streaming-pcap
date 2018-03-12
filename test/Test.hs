@@ -22,7 +22,7 @@ suite = testGroup "Unit Tests"
     ]
   , testGroup "Streaming"
     [ testCase "Packet Quantity (test)"  $ runResourceT (P.length_ $ offline "test/test.pcap") >>= (@?= 4)
-    , testCase "Packet Quantity (tsuru)" $ runResourceT (P.length_ $ offline "test/tsuru.pcap") >>= (@?= 21273)
+    -- , testCase "Packet Quantity (tsuru)" $ runResourceT (P.length_ $ offline "test/tsuru.pcap") >>= (@?= 21273)
     ]
   ]
 
