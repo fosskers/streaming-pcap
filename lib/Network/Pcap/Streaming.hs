@@ -1,8 +1,8 @@
 -- |
 -- Module    : Network.Pcap.Streaming
--- Copyright : (c) Colin Woodbury, 2018
+-- Copyright : (c) Colin Woodbury, 2018 - 2019
 -- License   : BSD3
--- Maintainer: Colin Woodbury <colingw@gmail.com>
+-- Maintainer: Colin Woodbury <colin@fosskers.ca>
 --
 -- A streaming interface to the <http://hackage.haskell.org/package/pcap-0.4.5.2 pcap>
 -- Haskell library, which itself is a binding to /libpcap/. Humbly adapted from
@@ -15,6 +15,7 @@ module Network.Pcap.Streaming
   , online
   ) where
 
+import           Control.Monad.Trans.Resource
 import qualified Data.Attoparsec.ByteString.Streaming as A
 import qualified Data.ByteString.Streaming as Q
 import           Data.Int (Int64)
@@ -32,8 +33,8 @@ offline :: MonadResource m => FilePath -> Stream (Of Packet) m ()
 offline = void . A.parsed packetP . Q.drop 24 . Q.readFile
 {-# SPECIALIZE offline :: FilePath -> Stream (Of Packet) (ResourceT IO) () #-}
 
--- | Read `Packet`s from some network device. See `Network.Pcap.openLive`
--- for a description of each argument.
+-- | Read `Packet`s from some network device. See `Network.Pcap.openLive` for a
+-- description of each argument.
 --
 -- /SPECIALIZE/d for @IO@.
 online :: MonadIO m => String -> Int -> Bool -> Int64 -> Stream (Of Packet) m ()

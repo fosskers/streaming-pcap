@@ -1,14 +1,7 @@
-resolver: lts-10.9
+resolver: lts-13.20
 
 packages:
   - .
 
 extra-deps:
   - pcap-0.4.5.2
-  - aeson-1.1.2.0
-  - attoparsec-0.13.1.0
-  - mmorph-1.0.9
-  - streaming-0.1.4.5
-  - streaming-bytestring-0.1.4.6
-  - streaming-commons-0.1.17
-  - streaming-utils-0.1.4.7

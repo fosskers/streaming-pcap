@@ -1,10 +1,10 @@
 module Main ( main ) where
 
+import           Control.Monad.Trans.Resource
 import qualified Data.Attoparsec.ByteString as A
 import qualified Data.ByteString as BS
 import           Network.Pcap.Streaming
 import           Network.Pcap.Streaming.Internal
-import           Streaming (runResourceT)
 import qualified Streaming.Prelude as P
 import           Test.Tasty
 import           Test.Tasty.HUnit
