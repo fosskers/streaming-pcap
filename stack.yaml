@@ -1,7 +1,6 @@
-resolver: lts-13.20
+resolver: lts-14.21
 
-packages:
-  - .
+ghc-options: {"$locals": -ddump-to-file -ddump-hi}
 
 extra-deps:
   - pcap-0.4.5.2
