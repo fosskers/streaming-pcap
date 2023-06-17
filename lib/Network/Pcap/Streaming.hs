@@ -17,11 +17,11 @@ module Network.Pcap.Streaming
 
 import           Control.Monad.Trans.Resource
 import qualified Data.Attoparsec.ByteString.Streaming as A
-import qualified Data.ByteString.Streaming as Q
 import           Data.Int (Int64)
 import           Network.Pcap
 import           Network.Pcap.Streaming.Internal
 import           Streaming
+import qualified Streaming.ByteString as Q
 import qualified Streaming.Prelude as P
 
 ---
