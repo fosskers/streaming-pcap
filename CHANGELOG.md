@@ -1,5 +1,11 @@
 # CHANGELOG
 
+### 1.1.2 (2023-06-20)
+
+#### Changed
+
+- Updated various bounds.
+
 ### 1.1.1
 
 - `offline` and `online` were given more relaxed inner-Monad parameters:
