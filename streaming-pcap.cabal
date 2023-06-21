@@ -9,7 +9,7 @@ category:           Web
 homepage:           https://github.com/fosskers/streaming-pcap
 author:             Colin Woodbury
 maintainer:         colin@fosskers.ca
-copyright:          2018 - 2020 Colin Woodbury
+copyright:          2018 - 2023 Colin Woodbury
 license:            BSD-3-Clause
 license-file:       LICENSE
 build-type:         Simple

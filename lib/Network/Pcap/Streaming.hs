@@ -1,6 +1,6 @@
 -- |
 -- Module    : Network.Pcap.Streaming
--- Copyright : (c) Colin Woodbury, 2018 - 2020
+-- Copyright : (c) Colin Woodbury, 2018 - 2023
 -- License   : BSD3
 -- Maintainer: Colin Woodbury <colin@fosskers.ca>
 --
